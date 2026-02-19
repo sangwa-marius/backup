@@ -1,10 +1,23 @@
 #!/bin/bash
 
-echo "Script name: $0"
-echo "program to run: $1"
+if [ -z "$1" ]; then
+  echo "Usage: ./compile_c.sh filename.c"
+  exit 1
 
-echo "Building $1..."
-gcc $1 -o main.c
+fi
 
-echo "Running the program..."
-./main.c
+filename="$1"
+output="${filename%.c}"
+
+echo "Compiling $filename..."
+
+gcc "$filename" -o "$output"
+
+if [ $? -eq 0 ]; then
+  echo "Running $output..."
+  ./"$output"
+
+else
+  echo "Compilation error"
+
+fi
