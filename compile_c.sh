@@ -7,17 +7,18 @@ if [ -z "${1:-}" ]; then
   exit 1
 fi
 
+mkdir -p bin
 filename="$1"
 output="${filename%.c}"
 
-rm -f "$output"
+rm -f "bin/$output"
 
 echo "[INFO] Compiling $filename"
 
-if gcc "$filename" -o "$output"; then
+if gcc "$filename" -o "bin/$output"; then
   echo "[INFO] Compilation successfull"
   echo "[INFO] Running $output"
-  ./"$output"
+  ./bin/$output
 else
   echo "Compilation failed"
 fi
