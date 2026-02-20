@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 int main() {
     printf("Hello, Bash Automation!\n");
 
@@ -10,5 +9,5 @@ int main() {
     printf("Sum: %d\n", a + b);
     printf("Product: %d\n", a * b);
 
-    return 0;
+
 }

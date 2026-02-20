@@ -1,23 +1,23 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
-  echo "Usage: ./compile_c.sh filename.c"
-  exit 1
+set -eu
 
+if [ -z "${1:-}" ]; then
+  echo "Usage: $0 filename.c"
+  exit 1
 fi
 
 filename="$1"
 output="${filename%.c}"
 
-echo "Compiling $filename..."
+rm -f "$output"
 
-gcc "$filename" -o "$output"
+echo "[INFO] Compiling $filename"
 
-if [ $? -eq 0 ]; then
-  echo "Running $output..."
+if gcc "$filename" -o "$output"; then
+  echo "[INFO] Compilation successfull"
+  echo "[INFO] Running $output"
   ./"$output"
-
 else
-  echo "Compilation error"
-
+  echo "Compilation failed"
 fi
