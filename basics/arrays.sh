@@ -2,6 +2,15 @@
 
 names=("Marius" "Sangwa" "Forever" "Rocky" "Marius" "Sangwa" "Forever" "Rocky")
 old_ifs=$IFS
-IFS="_"
+IFS=" "
 echo "names: ${names[@]}"
 echo "names in string form: ${names[*]}"
+echo "indices of names : ${!names[*]}"
+
+for i in "${names[@]}"; do
+    echo "name: $i"
+done
+
+for i in "${names[*]}"; do
+    echo "name: $i"
+done
