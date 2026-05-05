@@ -18,3 +18,18 @@ names=("${names[@]}")
 for  i in "${!names[@]}"; do
 echo "index $i  value ${names[i]}"
 done
+
+item="Rocky"
+echo "${item^^}"
+echo "${item,,}"
+
+new_array=()
+
+for i in "${names[@]}"; do
+    new_array+=("${i^^}")
+done
+
+
+echo "${new_array[@]}"
+echo "${#new_array[@]}"
+echo "${#new_array[*]}"
