@@ -4,7 +4,7 @@
 function greet() {
     echo "Hello, $1! you are $2 years old"
 }
-greet "Marius" "12"
+greet "Marius" 12
 
 # Standard function definition
 my_function(){
