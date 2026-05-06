@@ -28,11 +28,11 @@ mkdir -p bin
 for file in "${files[@]}"; do
     filename=$(basename "$file")
     output="bin/${filename%.c}"
-
+    
     printf "\n${YELLOW}[%d/%d] Compiling %s${NC}\n" "$count" "$total" "$filename"
-
+    
     rm -f "$output"
-
+    
     if gcc "$file" -o "$output"; then
         printf "${GREEN}Running %s...${NC}\n" "${filename%.c}"
         ./"$output"
@@ -40,7 +40,7 @@ for file in "${files[@]}"; do
         printf "${RED}Compilation failed for %s${NC}\n" "$filename"
         exit 1
     fi
-
+    
     ((count++))
 done
 
