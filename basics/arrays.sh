@@ -16,7 +16,7 @@ echo "${names[@]:2:4}"
 names=("${names[@]}")
 
 for  i in "${!names[@]}"; do
-echo "index $i  value ${names[i]}"
+    echo "index $i  value ${names[i]}"
 done
 
 item="Rocky"
