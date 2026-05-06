@@ -3,8 +3,8 @@
 set -eu
 
 if [ -z "${1:-}" ]; then
-  echo "Usage: $0 filename.c"
-  exit 1
+    echo "Usage: $0 filename.c"
+    exit 1
 fi
 
 mkdir -p bin
@@ -16,9 +16,9 @@ rm -f "bin/$output"
 echo "[INFO] Compiling $filename"
 
 if gcc "$filename" -o "bin/$output"; then
-  echo "[INFO] Compilation successfull"
-  echo "[INFO] Running $output"
-  ./bin/$output
+    echo "[INFO] Compilation successfull"
+    echo "[INFO] Running $output"
+    ./bin/$output
 else
-  echo "Compilation failed"
+    echo "Compilation failed"
 fi
