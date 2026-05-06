@@ -3,8 +3,8 @@
 YELLOW='\033[1;33m'
 read -p "Wanna read the data ? (y/n) " answer
 if [[ $answer == "y" ]]; then
-echo "Reading data from data.txt..."
-sleep 3
+    echo "Reading data from data.txt..."
+    sleep 3
     if [[ -f data.txt ]]; then
         echo "Contents of data.txt:"
         cat data.txt
