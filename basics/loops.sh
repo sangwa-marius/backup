@@ -19,9 +19,9 @@ i=1
 
 
 
-until (( i > 8)); do 
-echo "number $i"
-((i++))
+until (( i > 8)); do
+    echo "number $i"
+    ((i++))
 done
 
 file="./arrays.sh"
