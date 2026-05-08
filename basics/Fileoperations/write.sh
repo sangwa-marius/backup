@@ -1,6 +1,17 @@
 #!/bin/bash
 
 YELLOW='\033[1;33m'
+BLUE="\033[0;34m"
+NC="\033[0m"
+
+read -sp "Enter your password: " password
+echo ""
+if [[ $password != "sanMariento" ]]; then
+	echo "Wrong Password"
+	exit
+fi
+
+printf "${BLUE}Hello Marius! Welcome to your simple data recording bash script\n${NC}"
 read -p "Wanna read the data ? (y/n) " answer
 if [[ $answer == "y" ]]; then
     echo "Reading data from data.txt..."
