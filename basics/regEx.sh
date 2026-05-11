@@ -13,16 +13,16 @@ if [[ "${#password}" -lt 8 ]]; then
     exit
 elif
 
-  [[ ! $password =~ [A-Z] ]]; then
+[[ ! $password =~ [A-Z] ]]; then
     printf "${RED}Password must contain at least one uppercase letter\n${NC}"
     exit
-elif [[ ! $password =~ [a-z] ]]; then
+    elif [[ ! $password =~ [a-z] ]]; then
     printf "${RED}Password must contain at least one lowercase letter\n${NC}"
     exit
-elif [[ ! $password =~ [0-9] ]]; then
+    elif [[ ! $password =~ [0-9] ]]; then
     printf "${RED}Password must contain at least one digit\n${NC}"
     exit
-elif [[ ! $password =~ [^a-zA-Z0-9] ]]; then
+    elif [[ ! $password =~ [^a-zA-Z0-9] ]]; then
     printf "${RED}Password must contain at least one special character\n${NC}"
     exit
 else
