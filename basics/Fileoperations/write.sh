@@ -34,12 +34,14 @@ read -p "Enter the age: " age
 read -p "Enter the city: " city
 read -p "Enter the country: " country
 
-echo "------------------------------------------" >> data.txt
-echo "Date: [$(date '+%Y-%m-%d %H:%M:%S')]" >> data.txt
-echo "Name: $name" >> data.txt
-echo "Age: $age" >> data.txt
-echo "City: $city" >> data.txt
-echo "Country: $country" >> data.txt
-echo "------------------------------------------" >> data.txt
-echo  "" >> data.txt
+cat <<EOF >>data.txt
+--------------------------------------------
+Date: $(date +"%Y-%m-%d %H:%M:%S")
+Names :"${name}"
+Age: ${age}
+City: ${city}
+Country: ${country}
+--------------------------------------------
+
+EOF
 printf "${YELLOW}Information saved to data.txt${NC}\n"
