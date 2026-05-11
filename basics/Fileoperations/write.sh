@@ -29,18 +29,27 @@ if [[ $answer == "y" ]]; then
 else
     echo "Okay, let's write some data to data.txt"
 fi
-read -p "Enter the name: " name
-read -p "Enter the age: " age
-read -p "Enter the city: " city
-read -p "Enter the country: " country
+
+
+fields=("name" "age" "city" "country")
+declare -A user_info
+
+for field in "${fields[@]}"; do
+   if read -t 60 -p "Enter the ${field} (You only have 60 seconds): " value;then
+    user_info["$field"]=$value
+   else
+    echo "Time's up for ${field}! Exiting."
+    exit 1
+  fi
+done
 
 cat <<EOF >>data.txt
 --------------------------------------------
 Date: $(date +"%Y-%m-%d %H:%M:%S")
-Names :"${name}"
-Age: ${age}
-City: ${city}
-Country: ${country}
+Names :"${user_info["name"]}"
+Age: ${user_info["age"]}
+City: ${user_info["city"]}
+Country: ${user_info["country"]}
 --------------------------------------------
 
 EOF
