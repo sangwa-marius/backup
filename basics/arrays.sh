@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 names=("Marius" "Sangwa" "Forever" "Rocky" "Marius" "Sangwa" "Forever" "Rocky");
 echo "${#names[@]}"
