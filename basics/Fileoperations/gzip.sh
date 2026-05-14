@@ -27,7 +27,7 @@ if [[ ! -d $gzip_files ]]; then
     mkdir $gzip_files;
 fi
 
-echo -e "${BLUE}Zipping $file_path...${NC}" 
+echo -e "${BLUE}Zipping $file_path...${NC}"
 
 gzip $file_path
 output="$file_path.gz"
