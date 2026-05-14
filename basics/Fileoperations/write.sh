@@ -43,7 +43,7 @@ declare -A user_info
 
 for field in "${fields[@]}"; do
    if read -t 60 -p "Enter the ${field} (You only have 60 seconds): " value;then
-    user_info["$field"]=$value
+    user_info["${field}"]=$value
    else
     echo "Time's up for ${field}! Exiting."
     exit 1
