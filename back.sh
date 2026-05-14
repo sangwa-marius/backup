@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+BLUE="\033[0;34m"
+YELLOW="\033[1;33m"
+NC="\033[0m"
 backup_dir="$HOME/backups"
 backup(){
     read -p "Enter the path of the folder to backup: " path
     path="${path//\\//}"
     if [ ! -d "$path" ]; then
-        echo "The folder doesn't exist"
+        echo -e "${RED}The folder doesn't exist${NC}"
         return
     fi
     
@@ -14,26 +19,26 @@ backup(){
     
     mkdir -p "$dest"
     
-    echo "Backing up your folder..."
+    echo -e "${BLUE}Backing up your folder...${NC}"
     sleep 2
     cp -r "$path" "$dest"
-    echo "Backup folder at $dest"
+    echo -e "${YELLOW}Backup folder at $dest${NC}"
 }
 
 
 restore(){
     
     if [[ ! -d $backup_dir ]]; then
-        echo "No backups found!"
+        echo -e "${RED}No backups found!${NC}"
         exit 1
     fi
-    echo "Available backups"
-    ls "$backup_dir"
+    echo -e "${GREEN}Available backups${NC}"
+    ls --color=auto "$backup_dir"
     
     read -p "Enter the backup folder to restore: " restore
     
     if [ ! -d "$backup_dir/$restore" ]; then
-        echo "Invalid folder"
+        echo -e "${RED}Invalid folder${NC}"
         return
     fi
     
@@ -45,10 +50,10 @@ restore(){
         mkdir -p "$dest_rest"
     fi
     
-    echo "Restoring...."
+    echo -e "${BLUE}Restoring....${NC}"
     sleep 2
     cp -r "$backup_dir/$restore" "$folder"
-    echo "Restored at $folder"
+    echo -e "${YELLOW}Restored at $folder${NC}"
     
 }
 
