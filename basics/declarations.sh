@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # This script demonstrates the use of the 'declare' command in Bash to create and display various types of variables.
 
