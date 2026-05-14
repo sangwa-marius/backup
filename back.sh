@@ -9,7 +9,7 @@ backup(){
         return
     fi
     
-    date=$(date +%Y%m%d)
+    date=$(date +%s)
     dest="$backup_dir/$(basename "$path")_$date"
     
     mkdir -p "$dest"
@@ -22,6 +22,11 @@ backup(){
 
 
 restore(){
+    
+    if [[ ! -d $backup_dir ]]; then
+        echo "No backups found!"
+        exit 1
+    fi
     echo "Available backups"
     ls "$backup_dir"
     
