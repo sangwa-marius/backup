@@ -7,6 +7,13 @@ NC="\033[0m"
 
 read -sp "Enter your password: " password
 echo ""
+
+if [[ -z $password ]]; then
+    printf "${RED}Password cannot be empty. Exiting...\n${NC}"
+    sleep 2
+    exit 1
+fi
+
 if [[ $password != "sanMariento" ]]; then
 	printf "${RED}Wrong Password\n${NC}"
 	exit
