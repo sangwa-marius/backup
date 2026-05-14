@@ -33,4 +33,4 @@ gzip $file_path
 output="$file_path.gz"
 mv $output $gzip_files;
 
-echo -e "${YELLOW}Zipping completed${NC}"
+echo -e "${YELLOW}Zipping completed , You can find your zipped file in $gzip_files${NC}"
