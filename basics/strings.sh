@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-RED="\033[0;31m"
-YELLOW="\033[1;33m"
-BLUE="\033[0;34"
-NC="\033[0m"
+. ../colors.sh
 
 string="Hello world"
 string2="Bash scripting is fun"
