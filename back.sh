@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
-
-RED="\033[0;31m"
-GREEN="\033[0;32m"
-BLUE="\033[0;34m"
-YELLOW="\033[1;33m"
-NC="\033[0m"
+. ./colors.sh
 backup_dir="$HOME/backups"
 backup(){
     read -p "Enter the path of the folder to backup: " path
