@@ -10,22 +10,22 @@ if [[ -z $archive ]]; then
 fi
 
 if [[ ${#archive} -gt 10 ]]; then
-echo "archive name should be atmost 10 characters long"
-exit 1
+    echo "archive name should be atmost 10 characters long"
+    exit 1
 fi
 
 read -p "Enter the path of the files to archive: " -a files
 if [[ -z $files ]]; then
-echo "Files to archive are needed"
-exit 1
+    echo "Files to archive are needed"
+    exit 1
 fi
 
 archive_dir="$HOME/archives"
 
 if [[ ! -d $archive_dir ]]; then
-echo "Building archive directory..."
-sleep 2
-mkdir $archive_dir
+    echo "Building archive directory..."
+    sleep 2
+    mkdir $archive_dir
 fi
 
 echo -e "Archiving the files..."
