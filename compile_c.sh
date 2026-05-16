@@ -21,5 +21,5 @@ if gcc "$filename" -o "bin/$output"; then
     echo -e "${GREEN}[INFO] Running $output${NC}"
     ./bin/$output
 else
-    echo -e "${RED}[ERROR] Compilation failed${NC}"
+    echo -e "${RED}[ERROR] Compilation failed with code $?.${NC}"
 fi
