@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
+. ./colors.sh
 set -eu
 
 if [ -z "${1:-}" ]; then
-    echo "Usage: $0 filename.c"
+    echo -e "${RED}Usage: $0 filename.c${NC}"
     exit 1
 fi
 
@@ -13,12 +14,12 @@ output="${filename%.c}"
 
 rm -f "bin/$output"
 
-echo "[INFO] Compiling $filename"
+echo -e "${BLUE}[INFO] Compiling $filename${NC}"
 
 if gcc "$filename" -o "bin/$output"; then
-    echo "[INFO] Compilation successfull"
-    echo "[INFO] Running $output"
+    echo -e "${GREEN}[INFO] Compilation successful${NC}"
+    echo -e "${GREEN}[INFO] Running $output${NC}"
     ./bin/$output
 else
-    echo "Compilation failed"
+    echo -e "${RED}[ERROR] Compilation failed with code $?.${NC}"
 fi
