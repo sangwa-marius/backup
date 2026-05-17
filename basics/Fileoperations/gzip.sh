@@ -15,7 +15,7 @@ if [[ -z $file_path ]]; then
 fi
 
 if [[ ! -f $file_path ]]; then
-    echo -e "${RED} No such file found${NC}"
+    echo -e "${RED}No such file found${NC}"
     exit 1
 fi
 
