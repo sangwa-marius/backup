@@ -8,9 +8,7 @@ read -p "Enter your password: " password
 if [[ "${#password}" -lt 8 ]]; then
     printf "${RED}Password must be at least 8 characters long\n${NC}"
     exit
-elif
-
-[[ ! $password =~ [A-Z] ]]; then
+    elif [[ ! $password =~ [A-Z] ]]; then
     printf "${RED}Password must contain at least one uppercase letter\n${NC}"
     exit
     elif [[ ! $password =~ [a-z] ]]; then
