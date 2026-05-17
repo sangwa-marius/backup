@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-YELLOW="\033[1;33m"
-RED="\033[0;31m"
-BLUE="\033[0;34m"
-GREEN="\033[0;32m"
-NC="\033[0m"
+. ../../colors.sh
 
 read -p "Enter a path of the file to zip: " file_path
 
