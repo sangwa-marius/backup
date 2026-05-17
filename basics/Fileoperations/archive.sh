@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ../../colors.sh
+. ../../colors.sh
 
 HOME="$HOME"
 
