@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+. ../colors.sh
 add(){
     local sum=$(( $1 + $2 ))
     echo $sum
@@ -20,11 +21,15 @@ find_max(){
             max=$number
         fi
     done
-    echo "The maximum number is: $max"
+    echo "$max"
 }
 
 
 square(){
+    if [[ -z $1 ]]; then
+    echo -e "${RED}Usage: square argument${NC}"
+    exit 1
+    fi
     result=$(($1**2))
     echo "$result"
 }
