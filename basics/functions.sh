@@ -40,6 +40,14 @@ find_max(){
 }
 
 
+square(){
+    result=$(($1**2))
+    echo "$result"
+}
+
+square_of=$(square 4)
+echo "$square_of"
+
 find_max 3 5 7 2 8 1
 
 
