@@ -27,9 +27,11 @@ find_max(){
 
 square(){
     if [[ -z $1 ]]; then
-    echo -e "${RED}Usage: square argument${NC}"
+    echo -e "${PURPLE}Usage: square ${BOLD_PURPLE}one${PURPLE} argument${NC}"
     exit 1
     fi
     result=$(($1**2))
     echo "$result"
 }
+
+square
