@@ -53,10 +53,8 @@ restore(){
 }
 
 
-echo "======================================"
-echo "               🧠                     "
-echo "Welcome to a smart Backup &Restore tool"
-echo "============Marius script=============="
+toilet -cf small -F metal Backup - Restore     
+
 echo "1. Back up"
 echo "2. Restore"
 
