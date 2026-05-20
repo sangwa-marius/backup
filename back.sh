@@ -38,7 +38,7 @@ restore(){
     fi
     
     read -p " Enter the folder path to restore the backup: " folder
-    path="${path//\\//}"
+    folder="${folder//\\//}"
     if [ ! -d "$folder" ]; then
         echo "Creating a restoring folder...."
         sleep 2
@@ -60,15 +60,20 @@ echo "2. Restore"
 
 read -p "Choose an option [1/2]" choice
 
+if [[ -z $choice ]]; then
+echo -e "${RED}You didn't provide any choice! Exiting...${NC}"
+exit 1
+fi
+
 if [ $choice -eq 1 ]; then
-    sleep 2
     backup
+    exit 0
     elif [ $choice -eq 2 ]; then
-    sleep 2
     restore
+    exit 0
 else
-    sleep 3
-    echo "Invalid choice"
+    echo -e "${RED}Invalid choice${NC}"
+    exit 1
 fi
 
 
