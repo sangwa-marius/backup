@@ -4,6 +4,8 @@
 
 HOME="$HOME"
 
+toilet -cf small -F metal Archive maker
+
 read -p "Enter the name of the archive: " archive
 if [[ -z $archive ]]; then
     echo -e "${RED}Archive name should be provided! Exiting...${NC}"
