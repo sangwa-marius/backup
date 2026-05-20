@@ -2,6 +2,8 @@
 
 . ../../colors.sh
 
+toilet -cf small -F metal Record
+
 read -sp "Enter your password: " password
 echo ""
 
@@ -21,7 +23,7 @@ read -p "Wanna read the data ? (y/n) " answer
 if [[ $answer == "y" ]]; then
     echo "Reading data from data.txt..."
     sleep 3
-    if [[ -f data.txt ]]; then
+    if [[ -f "data.txt" ]]; then
         echo "Contents of data.txt:"
         while IFS= read -r line;do
 		echo "$line"

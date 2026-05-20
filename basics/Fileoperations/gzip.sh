@@ -2,6 +2,11 @@
 
 . ../../colors.sh
 
+
+toilet -cf small -F metal File zipper
+
+
+
 read -p "Enter a path of the file to zip: " file_path
 
 if [[ -z $file_path ]]; then
