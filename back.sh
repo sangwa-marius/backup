@@ -15,7 +15,6 @@ backup(){
     mkdir -p "$dest"
     
     echo -e "${BLUE}Backing up your folder...${NC}"
-    sleep 2
     cp -r "$path" "$dest"
     echo -e "${YELLOW}Backup folder at $dest${NC}"
 }
@@ -41,12 +40,10 @@ restore(){
     folder="${folder//\\//}"
     if [ ! -d "$folder" ]; then
         echo "Creating a restoring folder...."
-        sleep 2
         mkdir -p "$dest_rest"
     fi
     
-    echo -e "${BLUE}Restoring....${NC}"
-    sleep 2
+    echo -e "${BLUE}Restoring....${NC}
     cp -r "$backup_dir/$restore" "$folder"
     echo -e "${YELLOW}Restored at $folder${NC}"
     
