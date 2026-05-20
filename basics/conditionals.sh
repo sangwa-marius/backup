@@ -3,8 +3,23 @@
 . ../colors.sh
 
 while true; do
+
+    figlet -cf script -w 100 "Age   checker" | lolcat
     read -p "Hello , I 'm Your age checker. Who are you? " name
+    
+    if [[ -z $name ]]; then
+        echo -e "${BOLD_RED}You should provide your name pls! Exiting...${NC}"
+        sleep 2
+        exit 1
+    fi
+    
     read -p "Hello $name, How old are you?  "  age
+    if [[ -z $age ]]; then
+        echo -e "${BOLD_RED}You should provide your age pls. Exiting...${NC}"
+        sleep 2
+        exit 1
+    fi
+    
     if [[ $age -lt 18 ]]; then
         remaining=$((18-age))
         printf "${BLUE}Ooh! sorry %s you will be allowed to vote in next %i years\n${NC}" "$name" "$remaining"
