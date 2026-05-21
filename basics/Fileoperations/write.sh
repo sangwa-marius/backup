@@ -13,10 +13,21 @@ if [[ -z $password ]]; then
     exit 1
 fi
 
-if [[ $password != "sanMariento" ]]; then
-	printf "${RED}Wrong Password\n${NC}"
-	exit
+
+count=1
+
+while [[ $password != "sanMariento" ]]; do
+
+if [[ $count -ge 6 ]]; then
+echo -e "${BOLD_RED}Attempts over! Exiting...${NC}"
+sleep 2
+exit 1
 fi
+
+read -sp "Wrong password. try again[attempt $count/5]: " password
+echo ""
+((count++))
+done
 
 printf "${BLUE}Hello Marius! Welcome to your simple data recording bash script\n${NC}"
 read -p "Wanna read the data ? (y/n) " answer
