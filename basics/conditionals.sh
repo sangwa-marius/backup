@@ -19,7 +19,14 @@ while true; do
         sleep 2
         exit 1
     fi
-    
+
+    pattern=([^0-9])
+
+    if [[ $age =~ $pattern ]]; then
+    echo "The age should be a number"
+    exit 1 
+    fi
+
     if [[ $age -lt 18 ]]; then
         remaining=$((18-age))
         printf "${BLUE}Ooh! sorry %s you will be allowed to vote in next %i years\n${NC}" "$name" "$remaining"
