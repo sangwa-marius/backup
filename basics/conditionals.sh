@@ -41,7 +41,7 @@ while true; do
     
     read -p "Do you wanna check for more people?[Y/N] " choice
     if [[  $choice != "Y" && $choice != "Yes" && $choice != "yes"  && $choice != "y" ]]; then
-        printf "${YELLOW}Thanks for using the age checker, see you later!${NC}\n"
+        printf "${BOLD_YELLOW}Thanks for using the age checker, see you later!${NC}\n"
         break
     fi
     
