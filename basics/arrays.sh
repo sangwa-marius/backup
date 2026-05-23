@@ -30,6 +30,6 @@ echo "${unshift_names[0]}"
 upper_names=("")
 
 for name in "${names[@]}"; do
-upper_names+=("${name^^}")
+    upper_names+=("${name^^}")
 done
 echo "${upper_names[2]}"
