@@ -23,10 +23,15 @@ while true; do
     pattern=([^0-9])
 
     if [[ $age =~ $pattern ]]; then
-    echo "The age should be a number"
+    echo -e "${BOLD_RED}The age should be a number${NC}"
     exit 1 
     fi
 
+    if [[ ${#age} -gt 3 ]]; then
+    echo  -e "${BOLD_RED}Too old${NC}"
+    exit 1
+    fi
+    
     if [[ $age -lt 18 ]]; then
         remaining=$((18-age))
         printf "${BLUE}Ooh! sorry %s you will be allowed to vote in next %i years\n${NC}" "$name" "$remaining"
