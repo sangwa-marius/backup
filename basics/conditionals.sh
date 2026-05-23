@@ -2,9 +2,9 @@
 
 . ../colors.sh
 
+    figlet -cf slant -w 100 "Age   checker" | lolcat
 while true; do
 
-    figlet -cf script -w 100 "Age   checker" | lolcat
     read -p "Hello , I 'm Your age checker. Who are you? " name
     
     if [[ -z $name ]]; then
