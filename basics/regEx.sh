@@ -23,3 +23,14 @@ if [[ "${#password}" -lt 8 ]]; then
 else
     printf "${BLUE}Password is valid! Welcome to your simple data recording bash script\n${NC}"
 fi
+
+patten="^([a-zA-Z0-9.+_%]+)@([a-zA-Z0-9-]+)\.[a-zA-Z]{2,}$"
+email="mariussangwa@gmail.wwiii"
+
+if [[ $email =~ $patten ]]; then
+    echo "Valid email"
+    echo "Username     ${BASH_REMATCH[1]}"
+    echo "Domain       ${BASH_REMATCH[2]}"
+else
+    echo "Invalid Email"
+fi

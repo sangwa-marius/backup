@@ -2,9 +2,9 @@
 
 . ../colors.sh
 
+    figlet -cf slant -w 100 "Age   checker" | lolcat
 while true; do
 
-    figlet -cf script -w 100 "Age   checker" | lolcat
     read -p "Hello , I 'm Your age checker. Who are you? " name
     
     if [[ -z $name ]]; then
@@ -19,6 +19,18 @@ while true; do
         sleep 2
         exit 1
     fi
+
+    pattern=([^0-9])
+
+    if [[ $age =~ $pattern ]]; then
+    echo -e "${BOLD_RED}The age should be a number${NC}"
+    exit 1 
+    fi
+
+    if [[ ${#age} -gt 3 ]]; then
+    echo  -e "${BOLD_RED}Too old${NC}"
+    exit 1
+    fi
     
     if [[ $age -lt 18 ]]; then
         remaining=$((18-age))
@@ -29,7 +41,7 @@ while true; do
     
     read -p "Do you wanna check for more people?[Y/N] " choice
     if [[  $choice != "Y" && $choice != "Yes" && $choice != "yes"  && $choice != "y" ]]; then
-        printf "${YELLOW}Thanks for using the age checker, see you later!${NC}\n"
+        printf "${BOLD_YELLOW}Thanks for using the age checker, see you later!${NC}\n"
         break
     fi
     
