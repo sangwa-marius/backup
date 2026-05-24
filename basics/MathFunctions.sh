@@ -30,17 +30,17 @@ square(){
         echo -e "${PURPLE}Usage: square ${BOLD_PURPLE}one${PURPLE} argument${NC}"
         exit 1
     fi
-    result=$(($1**2))
+    local result=$(($1**2))
     echo "$result"
 }
 
 square_any(){
-    entries=("$@")
+    local entries=("$@")
     if [[ "${#entries[@]}" -lt 1 ]]; then
         echo -e "${PURPLE}Usange: square_any ${BOLD_PURPLE}argument1, argument2,...argument(n)${NC}"
         exit 1
     fi
-    squares=("")
+    local squares=("")
     for i in "${!entries[@]}"; do
         squares+=("$((${entries[i]}**2))")
     done
@@ -57,7 +57,7 @@ expon(){
     exit
     fi
 
-    result=$(($1**$2))
+    local result=$(($1**$2))
     echo $result
 }
 
