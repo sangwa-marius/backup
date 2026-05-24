@@ -51,3 +51,14 @@ square_any(){
     
 }
 
+expon(){
+    if [[ -z $1 || -z $2 ]];then
+    echo -e "${PURPLE}Usage: expon ${BOLD_PURPLE} arg1 arg2 ${NC}"
+    exit
+    fi
+
+    result=$(($1**$2))
+    echo $result
+}
+
+
