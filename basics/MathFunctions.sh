@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
 . ../colors.sh
+
+letter_pattern="[^0-9]"
 add(){
+    if [[ $1 =~ $letter_pattern || $2 =~ $letter_pattern ]]; then
+    echo -e "${BOLD_RED}Arguments should be intergers ${NC}"
+    exit
+    fi
+    
     local sum=$(( $1 + $2 ))
     echo $sum
 }
