@@ -21,7 +21,7 @@ if [[ "${#password}" -lt 8 ]]; then
     printf "${RED}Password must contain at least one special character\n${NC}"
     exit
 else
-    printf "${BLUE}Password is valid! Welcome to your simple data recording bash script\n${NC}"
+    printf "${BLUE}Password is valid! Welcome to your simple regular expression script\n${NC}"
 fi
 
 patten="^([a-zA-Z0-9.+_%]+)@([a-zA-Z0-9-]+)\.[a-zA-Z]{2,}$"
