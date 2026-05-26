@@ -30,8 +30,12 @@ echo ""
 done
 
 printf "${BLUE}Hello Marius! Welcome to your simple data recording bash script\n${NC}"
+
 read -p "Wanna read the data ? (y/n) " answer
-if [[ $answer == "y" ]]; then
+
+answer_pattern="[Yy]"
+
+if [[ $answer =~ $answer_pattern ]]; then
     echo "Reading data from data.txt..."
     sleep 3
     if [[ -f "data.txt" ]]; then
@@ -62,11 +66,11 @@ done
 
 cat <<EOF >>data.txt
 --------------------------------------------
-Date: $(date +"%Y-%m-%d %H:%M:%S")
-Names :"${user_info["name"]}"
-Age: ${user_info["age"]}
-City: ${user_info["city"]}
-Country: ${user_info["country"]}
+Date       [$(date +"%Y-%m-%d %H:%M:%S")]
+Names      ${user_info["name"]}
+Age        ${user_info["age"]}
+City       ${user_info["city"]}
+Country    ${user_info["country"]}
 --------------------------------------------
 
 EOF
