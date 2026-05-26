@@ -2,7 +2,7 @@
 
 . ../colors.sh
 
-string="Hello world"
+string="Hello worldld"
 string2="Bash scripting is fun"
 result="$string $string2 is a powerful tool for automation and scripting tasks."
 
@@ -19,6 +19,8 @@ echo "${string^^}" # converting to uppercase
 echo "${string:0:4}" # extracting a substring from index 0 with length 4
 
 echo "${string%ld}" # removing the shortest match of "ld" from the end
+
+echo "${string#*l}"
 
 
 
