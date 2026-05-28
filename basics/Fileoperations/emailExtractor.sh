@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 . ../../colors.sh
+. ./patterns.sh
 
 toilet -cf small -F metal Email Extractor
 
@@ -18,27 +19,26 @@ fi
 basename=$(basename "$email_container_path")
 file_ext=""
 
-file_pattern="^[a-zA-Z0-9.]+[a-zA-Z0-9.]+\.([a-zA-Z0-9]+$)"
-
 if [[ $basename =~ $file_pattern ]]; then
     file_ext="${BASH_REMATCH[1]}"
 else
     echo "File path doesn't match the pattern"
+    exit
 fi
 
 extracted_email_output_dir="$HOME/extracted_emails"
+
 extracted_email_output_file="$extracted_email_output_dir/${basename%.$file_ext}_output.txt"
+
 if [[ ! -d $extracted_email_output_dir ]]; then
-echo -e  "${GREEN}Building output directory...${NC}"
-mkdir $extracted_email_output_dir
+    echo -e  "${GREEN}Building output directory...${NC}"
+    mkdir $extracted_email_output_dir
 fi
 
-email_pattern="[a-zA-Z0-9.+%_]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}"
-
 if grep -Eo $email_pattern $email_container_path | sort -u > "$extracted_email_output_file"; then
-echo "Extracted emails from $email_container_path , removed duplicates , sorted them and saved them in $extracted_email_output_file"
+    echo -e "Extracted emails from ${BOLD_YELLOW}$email_container_path ${NC}, removed duplicates , sorted them and saved them in ${BOLD_YELLOW}$extracted_email_output_file${NC}"
 else
-echo "Failed to extract emails"
+    echo "Failed to extract emails"
 fi
 
 
