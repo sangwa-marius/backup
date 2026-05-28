@@ -36,7 +36,7 @@ echo -e "${GREEN}Archiving the files...${NC}"
 tar -cvf "$archive.tar" "${files[@]}"
 mv "$archive.tar" $archive_dir
 
-echo -e "${GREEN}Files archived to path $archive_dir${NC}"
+echo -e "${GREEN}Files archived to path ${BOLD_YELLOW}$archive_dir${NC}"
 
 
 
