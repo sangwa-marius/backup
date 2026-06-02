@@ -4,33 +4,34 @@
 
 read -p "Enter your password: " password
 
+lower='[a-z]'
+upper='[A-Z]'
+num='[0-9]'
+special='[^a-zA-Z0-9]'
 
-if [[ "${#password}" -lt 8 ]]; then
-    printf "${RED}Password must be at least 8 characters long\n${NC}"
-    exit
-    elif [[ ! $password =~ [A-Z] ]]; then
-    printf "${RED}Password must contain at least one uppercase letter\n${NC}"
-    exit
-    elif [[ ! $password =~ [a-z] ]]; then
-    printf "${RED}Password must contain at least one lowercase letter\n${NC}"
-    exit
-    elif [[ ! $password =~ [0-9] ]]; then
-    printf "${RED}Password must contain at least one digit\n${NC}"
-    exit
-    elif [[ ! $password =~ [^a-zA-Z0-9] ]]; then
-    printf "${RED}Password must contain at least one special character\n${NC}"
-    exit
-else
-    printf "${BLUE}Password is valid! Welcome to your simple regular expression script\n${NC}"
-fi
+while [[ ! $password =~ $lower || ! $password =~ $upper || ! $password =~ $num || ! $password =~ $special ]]; do
+    if [[ ! $password =~ $lower ]]; then
+        echo -e "${RED}Password should contain atleast one lowercase character${NC}\n"
+        elif [[ $passwd =~ $upper ]]; then
+        echo -e "${RED}Password should contain atleast one uppercase character${NC}\n"
+        elif [[ ! $password =~ $num ]]; then
+        echo -e "${RED}Password should contain atleast one number${NC}\n"
+        elif [[ ! $password =~ $special ]]; then
+        echo -e "${RED}Password should contain atleast one special character${NC}\n"
+    fi
+    
+    read -p "Re-Enter the password: " password
+done
 
-patten="^([a-zA-Z0-9.+_%]+)@([a-zA-Z0-9-]+)\.[a-zA-Z]{2,}$"
-email="mariussangwa@gmail.wwiii"
+echo -e "${BOLD_BLUE}Welcom!!!!${NC}\n"
+
+patten="^([a-zA-Z0-9.+_%]+)@([a-zA-Z0-9-]+)\.[a-zA-Z]{2,4}$"
+read -p "Enter YOur email: " email
 
 if [[ $email =~ $patten ]]; then
     echo "Valid email"
     echo "Username     ${BASH_REMATCH[1]}"
-    echo "Domain       ${BASH_REMATCH[2]}"
+    echo "Provider      ${BASH_REMATCH[2]}"
 else
     echo "Invalid Email"
 fi

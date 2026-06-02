@@ -7,29 +7,29 @@ add(){
     
     if [[ -z $1 || -z $2 ]]; then
         echo -e "${PURPLE}Usage: ${BOLD_PURPLE}add arg_1 arg_2${NC}"
-        exit
+        return
+        
     fi
     
     if [[ $1 =~ $letter_pattern || $2 =~ $letter_pattern ]]; then
         echo -e "${BOLD_RED}Arguments should be intergers ${NC}"
-        exit
+       return
     fi
     
     local sum=$(( $1 + $2 ))
     echo $sum
 }
 
-
 add_any(){
     if [[ ! $@ ]]; then
         echo -e "${PURPLE}Usage: ${BOLD_PURPLE}add_any arg_1 arg_2,... arg_n ${NC}"
-        exit
+        return
     fi
     
     for number in $@; do
         if [[ $number =~ $letter_pattern ]]; then
             echo -e "${BOLD_RED}All arguments should be numbers${NC}"
-            exit
+            return
         fi
     done
     
@@ -45,7 +45,7 @@ find_max(){
     
     if [[ ! $@ ]]; then
         echo -e "${PURPLE}Usage: ${BOLD_PURPLE}add_any arg_1 arg_2,... arg_n ${NC}"
-        exit
+        return
     fi
     
     for number in $@; do
@@ -69,12 +69,12 @@ find_max(){
 square(){
     if [[ -z $1 ]]; then
         echo -e "${PURPLE}Usage:${BOLD_PURPLE}sqaure arg${NC}"
-        exit 1
+        return
     fi
     
     if [[ $1 =~ $letter_pattern ]]; then
         echo -e "${BOLD_RED}Argument should be a number${NC}"
-        exit
+        return
     fi
 
     local result=$(($1**2))
@@ -84,13 +84,13 @@ square(){
 square_any(){
     if [[ ! $@ ]]; then
         echo -e "${PURPLE}Usage: ${BOLD_PURPLE}add_any arg_1 arg_2,... arg_n ${NC}"
-        exit
+        return
     fi
     
     for number in $@; do
         if [[ $number =~ $letter_pattern ]]; then
             echo -e "${BOLD_RED}All arguments should be numbers${NC}"
-            exit
+            return
         fi
     done
     
@@ -98,7 +98,7 @@ square_any(){
     
     if [[ "${#entries[@]}" -lt 1 ]]; then
         echo -e "${PURPLE}Usange: square_any ${BOLD_PURPLE}argument1, argument2,...argument(n)${NC}"
-        exit 1
+        return
     fi
     
     local squares=("")
@@ -116,13 +116,13 @@ square_any(){
 expon(){
     if [[ -z $1 || -z $2 ]];then
         echo -e "${PURPLE}Usage: expon ${BOLD_PURPLE} arg1 arg2 ${NC}"
-        exit
+        return
     fi
     
     for number in $@; do
         if [[ $number =~ $letter_pattern ]]; then
             echo -e "${BOLD_RED}All arguments should be numbers${NC}"
-            exit
+            return
         fi
     done
     
