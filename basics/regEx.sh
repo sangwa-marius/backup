@@ -25,13 +25,13 @@ done
 
 echo -e "${BOLD_BLUE}Welcom!!!!${NC}\n"
 
-patten="^([a-zA-Z0-9.+_%]+)@([a-zA-Z0-9-]+)\.[a-zA-Z]{2,}$"
-email="mariussangwa@gmail.wwiii"
+patten="^([a-zA-Z0-9.+_%]+)@([a-zA-Z0-9-]+)\.[a-zA-Z]{2,4}$"
+read -p "Enter YOur email: " email
 
 if [[ $email =~ $patten ]]; then
     echo "Valid email"
     echo "Username     ${BASH_REMATCH[1]}"
-    echo "Domain       ${BASH_REMATCH[2]}"
+    echo "Provider      ${BASH_REMATCH[2]}"
 else
     echo "Invalid Email"
 fi
