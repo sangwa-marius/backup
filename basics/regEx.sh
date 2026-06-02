@@ -12,7 +12,7 @@ special='[^a-zA-Z0-9]'
 while [[ ! $password =~ $lower || ! $password =~ $upper || ! $password =~ $num || ! $password =~ $special ]]; do
     if [[ ! $password =~ $lower ]]; then
         echo -e "${RED}Password should contain atleast one lowercase character${NC}\n"
-        elif [[ $passwd =~ $upper ]]; then
+        elif [[ ! $passwd =~ $upper ]]; then
         echo -e "${RED}Password should contain atleast one uppercase character${NC}\n"
         elif [[ ! $password =~ $num ]]; then
         echo -e "${RED}Password should contain atleast one number${NC}\n"
