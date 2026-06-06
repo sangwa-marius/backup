@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ../../colors.sh
+. ~/.colors.sh
 
 toilet -cf small -F metal File zipper
 

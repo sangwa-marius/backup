@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ../../colors.sh
+. ~/.colors.sh
 . ./patterns.sh
 
 toilet -cf small -F metal Email Extractor

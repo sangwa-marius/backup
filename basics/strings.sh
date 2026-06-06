@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ../colors.sh
+source ~/.colors.sh
 
 string="Hello worldld"
 string2="Bash scripting is fun"
@@ -20,7 +20,7 @@ echo "${string:0:4}" # extracting a substring from index 0 with length 4
 
 echo "${string%ld}" # removing the shortest match of "ld" from the end
 
-echo "${string#*l}"
+echo "${string##*l}"
 
 
 
