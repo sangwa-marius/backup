@@ -2,8 +2,8 @@
 
 source ~/.colors.sh
 
-printf "${BOLD_BLUE}%-22s %-30s %-15s %s\n" "Student names" "Email" "Marks" "Grade"
-printf "%-22s %-30s %-15s %s\n\n${NC}" "-------------" "-----" "-----" "-----"
+printf "${BOLD_BLUE}%-30s %-30s %-15s %s\n" "Student names" "Email" "Marks" "Grade"
+printf "%-30s %-30s %-15s %s\n\n${NC}" "-------------" "-----" "-----" "-----"
 
 count=0
 
@@ -30,5 +30,6 @@ marks_color="${GREEN}"
 grade="A"
 fi
 
-printf "$marks_color%-22s %-30s %-15i %s\n${NC}" "$names" "$email" "$marks" "$grade"
+printf "$marks_color%-30s %-30s %-15i %s\n${NC}" "  $names" "$email" "$marks" "$grade"
+echo "|--------------------------|-------------------------------|-----------|-------------|"
 done < data.csv
