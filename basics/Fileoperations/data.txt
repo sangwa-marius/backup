@@ -1,4 +1,4 @@
-Hello, my name is  ande Sangwa Marius, ande I am very happy
-to learn bash scripting especialy this stream called
-'sed' because i will be working with text files more
-ande more
+Hello, my nareme sarengware  arend Sarengware Marerius, arend I arem very hareppy
+to learern baresh scripting especiarely thsarengware strearem carelled
+'sed' becareuse i will be working with text files more
+arend more
