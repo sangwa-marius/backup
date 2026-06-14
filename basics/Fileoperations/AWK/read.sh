@@ -2,6 +2,8 @@
 
 source ~/.colors.sh
 
+toilet -cf slant -F metal "Csv reader"
+
 read -p "Enter file path: " file_path
 basename=$(basename "$file_path");
 echo $basename
