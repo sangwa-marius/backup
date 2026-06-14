@@ -2,6 +2,15 @@
 
 source ~/.colors.sh
 
+read -p "Enter file path: " file_path
+basename=$(basename "$file_path");
+echo $basename
+
+if [[ $basename  != *.csv ]]; then
+echo "File should be a csv file" >&2
+exit
+fi
+
 printf "\n${BOLD_BLUE}%-5s%-30s %-30s %-15s %s\n" "  No" "    Student names" " Email" " Marks" "  Grade"
 printf "%-5s %-30s %-30s %-15s %s\n${NC}" "  --" "   -------------" "-----" "-----" " -----"
 
@@ -39,7 +48,7 @@ while IFS=, read -r names email marks; do
     
     printf "+------+----------------------------+------------------------------+----------+-----------+\n"
     printf "%-5s%-30s %-30s %-15s %s\n" "|  $((count-1))" "  |    $names" "| $email" "| $marks       |" " $grade     |"
-done < data.csv
+done < $file_path
 
 count=$((count-1))
 average_marks=$((sum/count))
