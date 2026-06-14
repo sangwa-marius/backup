@@ -7,8 +7,8 @@ basename=$(basename "$file_path");
 echo $basename
 
 if [[ $basename  != *.csv ]]; then
-echo "File should be a csv file" >&2
-exit
+    echo "File should be a csv file" >&2
+    exit
 fi
 
 printf "\n${BOLD_BLUE}%-5s%-30s %-30s %-15s %s\n" "  No" "    Student names" " Email" " Marks" "  Grade"
