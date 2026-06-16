@@ -50,6 +50,7 @@ while IFS=, read -r names email marks; do
     
     printf "+------+----------------------------+------------------------------+----------+-----------+\n"
     printf "%-5s%-30s %-30s %-15s %s\n" "|  $((count-1))" "  |    $names" "| $email" "| $marks       |" " $grade     |"
+    sleep 0.005
 done < $file_path
 
 count=$((count-1))
@@ -81,7 +82,9 @@ while IFS=, read -r names email marks; do
     ((data_count++))
     if [[ $data_count -eq 1 ]]; then
         continue
+    
     fi
+     
     echo -e "Sending Email to $email..."
     if echo -e "Subject:Marks\n\nHello $names! your marks are $marks and your grade is $grade" | msmtp $email; then
         echo -e "${BOLD_YELLOW}Email sent to: $email${NC}\n"
