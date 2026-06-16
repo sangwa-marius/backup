@@ -82,9 +82,9 @@ while IFS=, read -r names email marks; do
     ((data_count++))
     if [[ $data_count -eq 1 ]]; then
         continue
-    
+        
     fi
-     
+    
     echo -e "Sending Email to $email..."
     if echo -e "Subject:Marks\n\nHello $names! your marks are $marks and your grade is $grade" | msmtp $email; then
         echo -e "${BOLD_YELLOW}Email sent to: $email${NC}\n"
