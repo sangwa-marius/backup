@@ -9,8 +9,8 @@ read -p "Thank you $name. Now Enter the subject: " subject
 read -p "Enter the message: " message
 
 if echo -e "Subject: $subject\n\n Hello ${receiver_email%@gmail.com}! ${name} has sent you a message: \n$message" | msmtp $receiver_email; then
-echo "Email sent successfully"
+    echo "Email sent successfully"
 else
-echo 
-echo "Failed to send the email"
+    echo
+    echo "Failed to send the email"
 fi
