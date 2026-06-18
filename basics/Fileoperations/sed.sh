@@ -13,5 +13,7 @@ for datum in "${data[@]}"; do
 done
 
 sed -i "s/${prompt_data[old_text]}/${prompt_data[new_text]}/g" "${prompt_data[filePath]}"
+
 count=$(grep -c "${prompt_data[old_text]}" "${prompt_data[filePath]}")
+
 echo -e "\n${YELLOW}The total replacements were ${BOLD_YELLOW}$count${NC}"
