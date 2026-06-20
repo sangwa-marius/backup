@@ -36,7 +36,8 @@ if [[ ! -d $extracted_email_output_dir ]]; then
 fi
 
 if grep -Eo $email_pattern $email_container_path | sort -u > "$extracted_email_output_file"; then
-    echo -e "Extracted emails from ${BOLD_YELLOW}$email_container_path ${NC}, removed duplicates , sorted them and saved them in ${BOLD_YELLOW}$extracted_email_output_file${NC}"
+count=$(grep -Ec "$email_pattern" "$extracted_email_output_file")
+    echo -e "Extracted ${BLUE}$count${NC} emails from ${BOLD_YELLOW}$email_container_path ${NC}, removed duplicates , sorted them and saved them in ${BOLD_YELLOW}$extracted_email_output_file${NC}"
 else
     echo "Failed to extract emails"
 fi
