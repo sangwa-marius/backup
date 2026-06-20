@@ -3,7 +3,7 @@
 . ~/.colors.sh
 . ./patterns.sh
 
-toilet -cf small -F metal Email Extractor
+toilet -cf script -F metal Email Extractor
 
 read -p "Enter the path of the file to extract emails from: " email_container_path
 if [[ -z $email_container_path ]]; then
@@ -30,13 +30,14 @@ extracted_email_output_dir="$HOME/extracted_emails"
 
 extracted_email_output_file="$extracted_email_output_dir/${basename%.$file_ext}_output.$file_ext"
 
-if [[ ! -d $extracted_email_output_dir ]]; then
+if [[ ! -d $extracted._email_output_dir ]]; then
     echo -e  "${GREEN}Building output directory...${NC}"
     mkdir $extracted_email_output_dir
 fi
 
 if grep -Eo $email_pattern $email_container_path | sort -u > "$extracted_email_output_file"; then
-    echo -e "Extracted emails from ${BOLD_YELLOW}$email_container_path ${NC}, removed duplicates , sorted them and saved them in ${BOLD_YELLOW}$extracted_email_output_file${NC}"
+    count=$(grep -Ec "$email_pattern" "$extracted_email_output_file")
+    echo -e "${WHITE}Extracted ${BOLD_BLUE}$count ${WHITE}emails from ${BOLD_YELLOW}$email_container_path, ${WHITE}removed duplicates , sorted them and saved them in ${BOLD_YELLOW}$extracted_email_output_file${NC}"
 else
     echo "Failed to extract emails"
 fi
