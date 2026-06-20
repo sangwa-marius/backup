@@ -30,7 +30,7 @@ extracted_email_output_dir="$HOME/extracted_emails"
 
 extracted_email_output_file="$extracted_email_output_dir/${basename%.$file_ext}_output.$file_ext"
 
-if [[ ! -d $extracted_email_output_dir ]]; then
+if [[ ! -d $extracted._email_output_dir ]]; then
     echo -e  "${GREEN}Building output directory...${NC}"
     mkdir $extracted_email_output_dir
 fi
