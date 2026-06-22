@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 source ~/.colors.sh
+source ./patterns.sh
 count=0
+
 
 if [[ ! -d $1 && ! -f $1 ]]; then
     echo -e "${RED}[Error]: No such file of directory, $1 ${NC}"
@@ -18,6 +20,8 @@ while FS= read -r inode du permissions links owner group size month day Time fil
     
     if [[ -d "$1/$file_name" ]]; then
         file_color="${BOLD_BLUE}"
+        elif [[ $file_name =~ $symlink_pattern ]]; then
+        file_color="${BOLD_CYAN}"
         elif [[ -f "$1/$file_name" && -x $file_name ]]; then
         file_color="${BOLD_GREEN}"
         elif [[ -f "$1/$file_name" && ! -x $file_name ]]; then
