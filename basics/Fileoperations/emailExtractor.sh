@@ -38,6 +38,7 @@ fi
 if grep -Eo $email_pattern $email_container_path | sort -u > "$extracted_email_output_file"; then
     count=$(grep -Ec "$email_pattern" "$extracted_email_output_file")
     echo -e "${WHITE}Extracted ${BOLD_BLUE}$count ${WHITE}emails from ${BOLD_YELLOW}$email_container_path, ${WHITE}removed duplicates , sorted them and saved them in ${BOLD_YELLOW}$extracted_email_output_file${NC}"
+    cat $extracted_email_output_file | gum filter --placeholder="Search for an email"
 else
     echo "Failed to extract emails"
 fi
