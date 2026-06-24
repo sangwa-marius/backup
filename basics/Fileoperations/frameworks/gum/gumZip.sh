@@ -19,32 +19,32 @@ file_path=$(
     gum input \
     --placeholder="Enter a path of the file to zip" \
     --placeholder.foreground 212
-    )
+)
 
 if [[ -z $file_path ]]; then
-echo -e "${RED}The file path can't be empty${NC}\n"
-exit 1
+    echo -e "${RED}The file path can't be empty${NC}\n"
+    exit 1
 fi
 
 if [[ ! -f "$file_path" ]]; then
-echo -e "${RED}No such file${NC}\n"
-exit 1
+    echo -e "${RED}No such file${NC}\n"
+    exit 1
 fi
 
 gzip_files="$HOME/gzip_files"
 
 if [[ ! -d $gzip_files ]]; then
-confirmation=$(gum confirm "Need to create a separate folder to hold gzip files?" && echo "yes" || echo "no") 
-if [[ $confirmation != "yes" ]]; then
-echo -e "${RED}User denied to create a separate folder for zipped files${NC}\n"
-else
-gum spin \
---spinner moon \
---title="Creating $gzip_files..." \
---title.foreground="50" \
--- sleep 3
-mkdir $gzip_files
-fi
+    confirmation=$(gum confirm "Need to create a separate folder to hold gzip files?" && echo "yes" || echo "no")
+    if [[ $confirmation != "yes" ]]; then
+        echo -e "${RED}User denied to create a separate folder for zipped files${NC}\n"
+    else
+        gum spin \
+        --spinner moon \
+        --title="Creating $gzip_files..." \
+        --title.foreground="50" \
+        -- sleep 3
+        mkdir $gzip_files
+    fi
 fi
 
 out_put_zipped_file="$file_path.gz"
