@@ -3,9 +3,9 @@
 clear
 # 1. Custom CSS-like styled header component
 gum style \
-    --foreground 99 --border-foreground 99 \
-    --border double --align center --width 50 --margin "1 2" \
-    "⚡ DEPLOYMENT ENGINE V2 ⚡" "Powered by Modern Bash-TUI"
+--foreground 99 --border-foreground 99 \
+--border double --align center --width 50 --margin "1 2" \
+"⚡ DEPLOYMENT ENGINE V2 ⚡" "Powered by Modern Bash-TUI"
 
 # 2. Interactive Input Component with Placeholder
 PROJECT_NAME=$(gum input --placeholder "Enter project repository name..." --width 40)
