@@ -26,7 +26,7 @@ echo -e "${RED}The file path can't be empty${NC}\n"
 exit 1
 fi
 
-if [[ ! -f $file_path ]]; then
+if [[ ! -f "$file_path" ]]; then
 echo -e "${RED}No such file${NC}\n"
 exit 1
 fi
