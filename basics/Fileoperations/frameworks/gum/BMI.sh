@@ -2,6 +2,8 @@
 
 source ~/.colors.sh
 
+
+clear
 gum style \
 --foreground 55 \
 --border double \
