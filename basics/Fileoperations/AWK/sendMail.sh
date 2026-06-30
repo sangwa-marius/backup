@@ -33,7 +33,7 @@ fi
 
 choice=$(gum confirm "Wanna attach some file?" && echo "yes" || echo "No")
 if [[ $choice != "yes" ]]; then
-echo -e "${BOLD_YELLOW}Thank you1"
+echo -e "${BOLD_YELLOW}Thank you"
 exit 
 fi
 
