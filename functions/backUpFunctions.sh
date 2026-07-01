@@ -27,7 +27,8 @@ restore(){
     
     if [[ -d $backup_dir ]]; then
         echo "Available backups"
-        ls $backup_dir
+        
+        ls  $backup_dir --color=auto
     else
         echo "No backups available"
         exit 1
