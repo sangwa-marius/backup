@@ -58,9 +58,15 @@ restore(){
     if [[ -d $backup_dir ]]; then
         echo "Available backups"
         
-        ls  $backup_dir --color=auto
+        if (shopt -s nullglob; set -- $backup_dir/*; (($# == 0))); then
+            echo "Backups directory is empty"
+            exit
+        else
+            echo "Avaliable backups"
+            ls $backup_dir --color=auto
+        fi
     else
-        echo "No backups available"
+        echo "No backup directory"
         exit 1
     fi
     
