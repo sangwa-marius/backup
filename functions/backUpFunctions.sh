@@ -13,24 +13,60 @@ backup(){
         echo "Done"
     fi
     
-    date=$(date +"%s")
-    desination="$backup_dir/$(basename $path)_$date"
+    local date=$(date +"%s")
+    local destination="$backup_dir/$(basename $path)_$date"
     
     echo -e "${BOLD_BLUE}Backing up your folder...${NC}"
-    cp -r $path $desination
+    cp -r $path $destination
     echo "Done"
-    echo -e "Backed up ${BOLD_YELLOW}$path ${NC}to ${BOLD_YELLOW}$desination${NC}"
+    echo -e "Backed up ${BOLD_YELLOW}$path ${NC}to ${BOLD_YELLOW}$destination${NC}"
     return
 }
 
+gumBack(){
+    local path=$(
+        find /home/marius -type d 2>/dev/null |  gum filter \
+        --placeholder="Select a folder to backup" \
+    )
+    
+    if [[ ! -d $backup_dir ]]; then
+        gum spin \
+        --spinner moon \
+        --title="Creating a backup folder" \
+        --title.foreground 50 \
+        -- bash -c "mkdir $backup_dir"
+    fi
+    
+    local date=$(date +"%s")
+    local destination="$backup_dir/$(basename $path)_$date"
+    
+    gum spin \
+    --spinner moon \
+    --title="Sending email..." \
+    --title.foreground 55 \
+    -- bash -c "cp -r '$path' '$destination'"
+    
+    if [ $? -eq 0 ]; then
+        echo -e "Backed up ${BOLD_YELLOW}$path ${NC}to ${BOLD_YELLOW}$destination${NC}"
+    else
+        echo "Failed to back up your folder"
+    fi
+    return
+}
 restore(){
     
     if [[ -d $backup_dir ]]; then
         echo "Available backups"
         
-        ls  $backup_dir --color=auto
+        if (shopt -s nullglob; set -- $backup_dir/*; (($# == 0))); then
+            echo "Backups directory is empty"
+            exit
+        else
+            echo "Avaliable backups"
+            ls $backup_dir --color=auto
+        fi
     else
-        echo "No backups available"
+        echo "No backup directory"
         exit 1
     fi
     

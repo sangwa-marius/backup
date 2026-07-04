@@ -22,7 +22,7 @@ choice=$(
 )
 
 if [[ $choice == "1. Backup" ]]; then
-backup
-else 
-restore
+    gumBack
+else
+    restore
 fi
