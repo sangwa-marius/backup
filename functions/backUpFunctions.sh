@@ -25,7 +25,7 @@ backup(){
 
 gumBack(){
     local path=$(
-        find /home/marius -type d 2>/dev/null |  gum filter \
+        find $HOME -type d 2>/dev/null |  gum filter \
         --placeholder="Select a folder to backup" \
     )
     
@@ -56,8 +56,6 @@ gumBack(){
 restore(){
     
     if [[ -d $backup_dir ]]; then
-        echo "Available backups"
-        
         if (shopt -s nullglob; set -- $backup_dir/*; (($# == 0))); then
             echo "Backups directory is empty"
             exit
@@ -81,4 +79,45 @@ restore(){
         echo "Failed to restore the folder, please try again"
     fi
     
+}
+
+gumRestore(){
+            declare folder_to_backup
+            declare restore_path
+            declare choice=1
+    while [[ $choice ]]; do
+        if [[ -d $backup_dir ]]; then
+            
+            
+            if (shopt -s nullglob; set -- $backup_dir/*; (($# == 0))); then
+                gum style \
+                --foreground 50 \
+                --bold \
+                "Backups directory is empty"
+                exit
+            else
+                folder_to_back_Up=$(ls $backup_dir  | gum choose --header="Which folder do you wanna backup?")
+                restore_path=$(find $HOME -type d 2>/dev/null | gum filter --placeholder="Where do you wanna restore it to?")
+                
+            fi
+        else
+            echo "No backup directory"
+            exit 1
+        fi
+        
+        gum spin  --spinner moon --title="Restoring..." -- sleep 3
+        if mv "$backup_dir/$folder_to_back_Up" "$restore_path"; then
+            gum style --foreground 50 --bold "Done"
+        else
+            echo "Failed to restore the folder, please try again"
+        fi
+        
+        choice=$(gum confirm "Do you wanna Restore more" && echo "yes" || echo "no")
+        if [ $choice != "yes" ]; then
+            break
+        fi
+    done
+    gum style \
+    --foreground 50 \
+    --bold "Thank you"
 }
