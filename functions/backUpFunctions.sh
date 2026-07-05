@@ -67,8 +67,12 @@ gumBack(){
             fi
         done
         
-        choice=$(gum confirm "Do you wanna backup some more folders?" && echo 1 || echo 0)
-        if [[ $choice == 0 ]]; then
+        if ! gum confirm "Do you wanna backup some more folders?" \
+        --prompt.foreground 40 \
+        --selected.background 40 \
+        --selected.foreground 240 \
+        --unselected.foreground 60;
+        then
             break
         fi
     done
@@ -107,19 +111,19 @@ gumRestore(){
     local folders_to_restore=()
     local restore_path
     
-    if [[ ! -d $backup_dir ]]; then
-        echo "No backup directory found."
-        return 1
-    fi
-
-    if (shopt -s nullglob; set -- "$backup_dir"/*; (($# == 0))); then
-        gum style --foreground 50 --bold "Backups directory is empty"
-        retrun 1
-    fi
-
-
+    
+    
     while true; do
         
+        if [[ ! -d $backup_dir ]]; then
+            echo "No backup directory found."
+            return 1
+        fi
+        
+        if (shopt -s nullglob; set -- "$backup_dir"/*; (($# == 0))); then
+            gum style --foreground 50 --bold "Backups directory is empty"
+            exit 1
+        fi
         mapfile -t folders_to_restore < <(
             find "$backup_dir" -maxdepth 1 -mindepth 1 -type d -exec basename {} \; | gum filter \
             --indicator.foreground 50 \
@@ -131,13 +135,13 @@ gumRestore(){
             --text.foreground 30 \
             --no-limit
         )
-
-      
+        
+        
         if (( ${#folders_to_restore[@]} == 0 )); then
             echo "No folders selected."
             return 1
         fi
-
+        
         restore_path=$(
             find "$HOME" -maxdepth 2 -type d ! -path '*/.*' 2>/dev/null | gum filter \
             --placeholder="Where do you wanna restore it to?" \
@@ -148,13 +152,13 @@ gumRestore(){
             --cursor-text.foreground 50 \
             --match.foreground 40
         )
-
+        
         if [[ -z $restore_path ]]; then
             echo "No destination selected."
             break
         fi
         
-     
+        
         for folder in "${folders_to_restore[@]}"; do
             gum spin  \
             --spinner moon \
@@ -169,11 +173,15 @@ gumRestore(){
             fi
         done
         
-       
-        if ! gum confirm "Do you wanna Restore more?"; then
+        if ! gum confirm "Do you wanna backup some more folders?" \
+        --prompt.foreground 40 \
+        --selected.background 40 \
+        --selected.foreground 240 \
+        --unselected.foreground 60;
+        then
             break
         fi
     done
-
+    
     gum style --foreground 50 --bold "Thank you"
 }
