@@ -24,5 +24,5 @@ choice=$(
 if [[ $choice == "1. Backup" ]]; then
     gumBack
 else
-    restore
+  gumRestore
 fi
