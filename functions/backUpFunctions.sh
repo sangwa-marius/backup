@@ -108,12 +108,10 @@ restore(){
 }
 
 gumRestore(){
-    local folders_to_restore=()
-    local restore_path
-    
-    
     
     while true; do
+        local folders_to_restore=()
+        local restore_path
         
         if [[ ! -d $backup_dir ]]; then
             echo "No backup directory found."
@@ -125,13 +123,15 @@ gumRestore(){
             exit 1
         fi
         mapfile -t folders_to_restore < <(
-            find "$backup_dir" -maxdepth 1 -mindepth 1 -type d -exec basename {} \; | gum filter \
+            find "$backup_dir" -maxdepth 3 -mindepth 1 -type d -exec basename {} \;| gum filter \
             --indicator.foreground 50 \
             --placeholder="Which folder(s) do you wanna restore? (Tab to select multiple)" \
             --placeholder.foreground 40 \
             --prompt.foreground 40 \
             --cursor-text.foreground 50 \
             --match.foreground 50 \
+            --selected-indicator.foreground 50 \
+            --unselected-prefix.foreground 30 \
             --text.foreground 30 \
             --no-limit
         )
