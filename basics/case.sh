@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source ~/.colors.sh
+
+source ../colors.sh
 
 read -p "Enter your age: " age
 

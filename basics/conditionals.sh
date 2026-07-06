@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ~/.colors.sh
+source ../colors.sh
 
 figlet -cf slant -w 100 "Age   checker" | lolcat
 while true; do

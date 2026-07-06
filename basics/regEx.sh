@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ~/.colors.sh
+source ../colors.sh
 
 read -p "Enter your password: " password
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ~/.colors.sh
+source ../colors.sh
 
 string="Hello worldld"
 string2="Bash scripting is fun"
