@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ~/.colors.sh
+source ../../colors.sh
 
 toilet -cf slant -F metal "Sed Stream Editor"
 

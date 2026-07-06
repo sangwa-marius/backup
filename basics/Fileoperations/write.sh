@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ~/.colors.sh
+source ../../colors.sh
 
 toilet -cf small -F metal Record
 

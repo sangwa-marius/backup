@@ -1,4 +1,6 @@
+#!/usr/bin/env bash
 
+source ../colors.sh
 backup_dir="$HOME/backups"
 backup(){
     read -p "Enter the path of the folder to backup: " path

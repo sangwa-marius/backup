@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ~/.colors.sh
+source ../../../../colors.sh
 
 clear
 

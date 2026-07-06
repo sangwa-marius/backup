@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ~/.colors.sh
+source ./colors.sh
 
 printf "${BLUE}====================================\n${NC}"
 printf "${BLUE}A simple compiler for all c programs\n${NC}"

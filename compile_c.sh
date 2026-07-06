@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ~/.colors.sh
+source ./colors.sh
 set -eu
 
 if [ -z "${1:-}" ]; then

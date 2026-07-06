@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-source ~/.colors.sh
+source ../../../colors.sh
+
 toilet -cf slant -F metal "Email sender"
 
 read -p "What is your name? " name

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ~/.colors.sh
+source ../colors.sh
 
 letter_pattern="[^0-9]"
 add(){
