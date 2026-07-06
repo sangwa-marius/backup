@@ -8,6 +8,7 @@ BEGIN{
 NR > 1{
     sum += $3
     count++
+    print $3
 }
 
 END{
