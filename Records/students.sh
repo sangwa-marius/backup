@@ -1,16 +1,38 @@
 #!/usr/bin/env bash
 
-source ../colors.sh
+if [[ -f ../gumColors.sh ]]; then
+    source ../gumColors.sh
+else
+    echo "Critical Error: ../gumColors.sh is missing"
+    exit 1
+fi
 
 file="../Db/Local/SchoolDb/students.csv"
+clear
+style=$(gum style \
+--foreground $FOREST_GREEN \
+--align center \
+--border rounded \
+--width 50 \
+--border-foreground $ELECTRIC_BLUE \
+--bold \
+"Powered_by_gum_framework_of_Bash")
 
-toilet -cf small -F metal Record
+gum style \
+--foreground $ELECTRIC_BLUE \
+--border double \
+--align center \
+--width 70 \
+--border-foreground $ELECTRIC_BLUE \
+--bold \
+"STUDENT RECORDING PORTAL" $style
 
-read -sp "Enter your password: " password
-echo ""
+
+
+password=$(gum input --password --placeholder "Enter the password" --cursor.foreground $ELECTRIC_BLUE --prompt.foreground $ELECTRIC_BLUE)
 
 if [[ -z $password ]]; then
-    printf "${RED}Password cannot be empty. Exiting...\n${NC}"
+    gum style --foreground $RED "Password cannot be empty. Exiting..."
     sleep 2
     exit 1
 fi
@@ -21,26 +43,28 @@ count=1
 while [[ $password != "sanMariento" ]]; do
     
     if [[ $count -ge 6 ]]; then
-        echo -e "${BOLD_RED}Attempts over! Exiting...${NC}"
+        gum style --foreground $RED "Attempts over! Exiting..."
         sleep 2
         exit 1
     fi
     
-    read -sp "Wrong password. try again[attempt $count/5]: " password
-    echo ""
+    password=$(gum input \
+    --password --placeholder "Wrong password. try again[attempt $count/5]" \
+    --placeholder.foreground $DARK_RED \
+    --cursor.foreground $RED \
+    --prompt.foreground $RED
+    )
     ((count++))
 done
 
-printf "${BLUE}Hello Marius! Welcome to your simple data recording bash script\n${NC}"
+gum style \
+--foreground $BLUE \
+--bold "Welcome again"
 
-read -p "Wanna read the data ? (y/n) " answer
-
-answer_pattern="[Yy]"
-
-if [[ $answer =~ $answer_pattern ]]; then
+if gum confirm "Wanna read the data ?" --selected.background $FOREST_GREEN --prompt.foreground $FOREST_GREEN; then
     if [[ -f "$file" ]]; then
         echo "Contents:"
-        gum table -p  -b normal <$file
+        gum table -p  -b normal --header.foreground $FOREST_GREEN <$file
     else
         echo "$file does not exist."
     fi
@@ -61,12 +85,7 @@ Students_fields=(
 declare -A user_info
 
 for field in "${Students_fields[@]}"; do
-    if read -t 60 -p "Enter ${field} (You only have 60 seconds): " value;then
-        user_info["${field}"]=$value
-    else
-        echo "Time's up for ${field}! Exiting."
-        exit 1
-    fi
+        user_info["${field}"]=$(gum input --placeholder "Enter ${field}")
 done
 
 cat <<EOF >>$file
@@ -74,6 +93,6 @@ cat <<EOF >>$file
 EOF
 
 if [[ $? -eq 0 ]]; then
-    printf "${YELLOW}Information saved to $file${NC}\n"
+    gum style --foreground $GREEN "Information saved to $file"
 fi
 
