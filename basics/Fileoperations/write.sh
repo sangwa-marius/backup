@@ -36,19 +36,19 @@ read -p "Wanna read the data ? (y/n) " answer
 answer_pattern="[Yy]"
 
 if [[ $answer =~ $answer_pattern ]]; then
-    echo "Reading data from data.txt..."
+    echo "Reading data from data.csv..."
     sleep 3
-    if [[ -f "data.txt" ]]; then
-        echo "Contents of data.txt:"
+    if [[ -f "data.csv" ]]; then
+        echo "Contents of data.csv:"
         while IFS= read -r line;do
 		echo "$line"
 		sleep 1
-	done<data.txt
+	done<data.csv
     else
-        echo "data.txt does not exist."
+        echo "data.csv does not exist."
     fi
 else
-    echo "Okay, let's write some data to data.txt"
+    echo "Okay, let's write some data to data.csv"
 fi
 
 
@@ -64,14 +64,7 @@ for field in "${fields[@]}"; do
   fi
 done
 
-cat <<EOF >>data.txt
---------------------------------------------
-Date       [$(date +"%Y-%m-%d %H:%M:%S")]
-Names      ${user_info["name"]}
-Age        ${user_info["age"]}
-City       ${user_info["city"]}
-Country    ${user_info["country"]}
---------------------------------------------
-
+cat <<EOF >>data.csv
+[$(date +"%Y-%m-%d %H:%M:%S")],${user_info["name"]},${user_info["age"]},${user_info["city"]},${user_info["country"]}
 EOF
-printf "${YELLOW}Information saved to data.txt${NC}\n"
+printf "${YELLOW}Information saved to data.csv${NC}\n"

@@ -1,0 +1,6 @@
+ID,Server_Name,Location,Status,IP_Address
+01,alpha-web-prod,us-east-1,Online,10.0.1.15
+02,beta-db-cluster,eu-central-1,Maintenance,10.2.4.99
+03,gamma-cache-prod,ap-southeast-1,Online,10.5.12.3
+04,delta-auth-dev,us-west-2,Online,192.168.1.50
+05,omega-billing-failover,eu-west-1,Offline,10.9.88.4
