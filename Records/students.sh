@@ -13,17 +13,18 @@ clear
 style=$(gum style \
 --foreground $FOREST_GREEN \
 --align center \
---border normal \
---width 50 \
+--border rounded \
+--width 40 \
 --border-foreground $FOREST_GREEN \
 --bold \
 "$framework")
 
 gum style \
 --foreground $ELECTRIC_BLUE \
---border double \
+--border normal \
 --align center \
---width 70 \
+--width 50 \
+--margin "2 1" \
 --border-foreground $ELECTRIC_BLUE \
 --bold \
 "STUDENT RECORDING PORTAL" "$style"
@@ -99,9 +100,9 @@ for field in "${Students_fields[@]}"; do
             --cursor.foreground $ELECTRIC_BLUE
             )
 
-            input="${user_info[field]}"
+            input="${user_info[$field]}"
             if [[ -z $input ]]; then
-            gum style --foreground $RED "$field can be empty. Exiting..."
+            gum style --foreground "$RED" "$field cannot be empty. Exiting..."
             exit
             fi
 done
@@ -111,6 +112,6 @@ cat <<EOF >>$file
 EOF
 
 if [[ $? -eq 0 ]]; then
-    gum style --foreground $GREEN "Information saved to $file"
+    gum style --foreground $YELLOW "Information saved to $file"
 fi
 
