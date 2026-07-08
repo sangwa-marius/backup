@@ -8,28 +8,36 @@ else
 fi
 
 file="../Db/Local/SchoolDb/students.csv"
+framework="Powered by gum framework of Bash"
 clear
 style=$(gum style \
 --foreground $FOREST_GREEN \
 --align center \
 --border rounded \
---width 50 \
---border-foreground $ELECTRIC_BLUE \
+--width 40 \
+--border-foreground $FOREST_GREEN \
 --bold \
-"Powered_by_gum_framework_of_Bash")
+"$framework")
 
 gum style \
 --foreground $ELECTRIC_BLUE \
---border double \
+--border normal \
 --align center \
---width 70 \
+--width 50 \
+--margin "2 1" \
 --border-foreground $ELECTRIC_BLUE \
 --bold \
-"STUDENT RECORDING PORTAL" $style
+"STUDENT RECORDING PORTAL" "$style"
 
 
 
-password=$(gum input --password --placeholder "Enter the password" --cursor.foreground $ELECTRIC_BLUE --prompt.foreground $ELECTRIC_BLUE)
+password=$(
+    gum input \
+    --password \
+    --placeholder "Enter the password" \
+    --cursor.foreground $ELECTRIC_BLUE \
+    --prompt.foreground $ELECTRIC_BLUE
+    )
 
 if [[ -z $password ]]; then
     gum style --foreground $RED "Password cannot be empty. Exiting..."
@@ -85,7 +93,18 @@ Students_fields=(
 declare -A user_info
 
 for field in "${Students_fields[@]}"; do
-        user_info["${field}"]=$(gum input --placeholder "Enter ${field}")
+        user_info["${field}"]=$(
+            gum input \
+            --placeholder "Enter ${field}" \
+            --prompt.foreground $ELECTRIC_BLUE \
+            --cursor.foreground $ELECTRIC_BLUE
+            )
+
+            input="${user_info[$field]}"
+            if [[ -z $input ]]; then
+            gum style --foreground "$RED" "$field cannot be empty. Exiting..."
+            exit
+            fi
 done
 
 cat <<EOF >>$file
@@ -93,6 +112,6 @@ cat <<EOF >>$file
 EOF
 
 if [[ $? -eq 0 ]]; then
-    gum style --foreground $GREEN "Information saved to $file"
+    gum style --foreground $YELLOW "Information saved to $file"
 fi
 
