@@ -13,7 +13,7 @@ clear
 style=$(gum style \
 --foreground $FOREST_GREEN \
 --align center \
---border rounded \
+--border normal \
 --width 50 \
 --border-foreground $FOREST_GREEN \
 --bold \
