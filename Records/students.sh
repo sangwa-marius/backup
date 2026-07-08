@@ -29,7 +29,13 @@ gum style \
 
 
 
-password=$(gum input --password --placeholder "Enter the password" --cursor.foreground $ELECTRIC_BLUE --prompt.foreground $ELECTRIC_BLUE)
+password=$(
+    gum input \
+    --password \
+    --placeholder "Enter the password" \
+    --cursor.foreground $ELECTRIC_BLUE \
+    --prompt.foreground $ELECTRIC_BLUE
+    )
 
 if [[ -z $password ]]; then
     gum style --foreground $RED "Password cannot be empty. Exiting..."
@@ -85,7 +91,18 @@ Students_fields=(
 declare -A user_info
 
 for field in "${Students_fields[@]}"; do
-        user_info["${field}"]=$(gum input --placeholder "Enter ${field}")
+        user_info["${field}"]=$(
+            gum input \
+            --placeholder "Enter ${field}" \
+            --prompt.foreground $ELECTRIC_BLUE \
+            --cursor.foreground $ELECTRIC_BLUE
+            )
+
+            input="${user_info[field]}"
+            if [[ -z $input ]]; then
+            gum style --foreground $RED "$field can be empty. Exiting..."
+            exit
+            fi
 done
 
 cat <<EOF >>$file
