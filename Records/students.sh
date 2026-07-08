@@ -8,6 +8,7 @@ else
 fi
 
 file="../Db/Local/SchoolDb/students.csv"
+framework="Powered by gum framework of Bash"
 clear
 style=$(gum style \
 --foreground $FOREST_GREEN \
@@ -16,7 +17,7 @@ style=$(gum style \
 --width 50 \
 --border-foreground $ELECTRIC_BLUE \
 --bold \
-"Powered_by_gum_framework_of_Bash")
+$framework)
 
 gum style \
 --foreground $ELECTRIC_BLUE \
