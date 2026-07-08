@@ -15,9 +15,9 @@ style=$(gum style \
 --align center \
 --border rounded \
 --width 50 \
---border-foreground $ELECTRIC_BLUE \
+--border-foreground $FOREST_GREEN \
 --bold \
-$framework)
+"$framework")
 
 gum style \
 --foreground $ELECTRIC_BLUE \
@@ -26,7 +26,7 @@ gum style \
 --width 70 \
 --border-foreground $ELECTRIC_BLUE \
 --bold \
-"STUDENT RECORDING PORTAL" $style
+"STUDENT RECORDING PORTAL" "$style"
 
 
 
