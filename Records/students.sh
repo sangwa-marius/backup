@@ -69,16 +69,7 @@ gum style \
 --foreground $BLUE \
 --bold "Welcome again"
 
-if gum confirm "Wanna read the data ?" --selected.background $FOREST_GREEN --prompt.foreground $FOREST_GREEN; then
-    if [[ -f "$file" ]]; then
-        echo "Contents:"
-        gum table -p  -b normal --header.foreground $FOREST_GREEN <$file
-    else
-        echo "$file does not exist."
-    fi
-else
-    echo "Okay, let's write some data to $file"
-fi
+
 
 
 Students_fields=(
