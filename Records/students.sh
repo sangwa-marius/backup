@@ -11,12 +11,12 @@ file="../Db/Local/SchoolDb/students.csv"
 framework="Powered by gum framework of Bash"
 clear
 style=$(gum style \
---foreground $FOREST_GREEN \
---align center \
---border rounded \
---width 40 \
---border-foreground $FOREST_GREEN \
---bold \
+    --foreground $FOREST_GREEN \
+    --align center \
+    --border rounded \
+    --width 40 \
+    --border-foreground $FOREST_GREEN \
+    --bold \
 "$framework")
 
 gum style \
@@ -37,7 +37,7 @@ password=$(
     --placeholder "Enter the password" \
     --cursor.foreground $ELECTRIC_BLUE \
     --prompt.foreground $ELECTRIC_BLUE
-    )
+)
 
 if [[ -z $password ]]; then
     gum style --foreground $RED "Password cannot be empty. Exiting..."
@@ -57,10 +57,10 @@ while [[ $password != "sanMariento" ]]; do
     fi
     
     password=$(gum input \
-    --password --placeholder "Wrong password. try again[attempt $count/5]" \
-    --placeholder.foreground $DARK_RED \
-    --cursor.foreground $RED \
-    --prompt.foreground $RED
+        --password --placeholder "Wrong password. try again[attempt $count/5]" \
+        --placeholder.foreground $DARK_RED \
+        --cursor.foreground $RED \
+        --prompt.foreground $RED
     )
     ((count++))
 done
@@ -93,18 +93,18 @@ Students_fields=(
 declare -A user_info
 
 for field in "${Students_fields[@]}"; do
-        user_info["${field}"]=$(
-            gum input \
-            --placeholder "Enter ${field}" \
-            --prompt.foreground $ELECTRIC_BLUE \
-            --cursor.foreground $ELECTRIC_BLUE
-            )
-
-            input="${user_info[$field]}"
-            if [[ -z $input ]]; then
-            gum style --foreground "$RED" "$field cannot be empty. Exiting..."
-            exit
-            fi
+    user_info["${field}"]=$(
+        gum input \
+        --placeholder "Enter ${field}" \
+        --prompt.foreground $ELECTRIC_BLUE \
+        --cursor.foreground $ELECTRIC_BLUE
+    )
+    
+    input="${user_info[$field]}"
+    if [[ -z $input ]]; then
+        gum style --foreground "$RED" "$field cannot be empty. Exiting..."
+        exit
+    fi
 done
 
 cat <<EOF >>$file
