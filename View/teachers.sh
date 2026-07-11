@@ -7,7 +7,7 @@ else
     exit 1
 fi
 
-Db_File="../Db/Local/SchoolDb/students.csv"
+Db_File="../Db/Local/SchoolDb/teachers.csv"
 
 
 
@@ -19,7 +19,7 @@ while true; do
         echo "$Db_File does not exist."
     fi
     
-    Student_email=$(awk -F ',' 'NR>1{print $4}' "$Db_File" | gum filter \
+    Student_email=$(awk -F ',' 'NR>1{print $3}' "$Db_File" | gum filter \
         --placeholder "Filter by student email to get details" \
         --prompt.foreground "$FOREST_GREEN" \
         --cursor-text.foreground "$FOREST_GREEN" \
@@ -32,7 +32,7 @@ while true; do
         exit 1
     fi
     
-    while IFS=, read -r date name age email school city country; do
+    while IFS=, read -r date name email age subject school; do
         if [[ "$email" == "$Student_email" ]]; then
             gum style \
             --border normal \
@@ -42,8 +42,8 @@ while true; do
             "Name   : $name" \
             "Email  : $email" \
             "Age    : $age" \
-            "City   : $city" \
-            "Country: $country" \
+            "Subject: $subject" \
+            "School: $school" \
             
         fi
     done <"$Db_File"
