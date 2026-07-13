@@ -9,8 +9,6 @@ fi
 
 Db_File="../Db/Local/SchoolDb/students.csv"
 
-
-
 while true; do
     clear
     if [[ -f "$Db_File" ]]; then

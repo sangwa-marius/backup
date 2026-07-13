@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+email_pattern='[a-zA-Z0-9_%]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,}$'
+
 if [[ -f ../gumColors.sh ]]; then
     source ../gumColors.sh
 else
@@ -96,6 +98,18 @@ for field in "${Students_fields[@]}"; do
         gum style --foreground "$RED" "$field cannot be empty. Exiting..."
         exit
     fi
+
+    if [[ "$field" == "Student's age" && ! "$input" =~ [0-9]+$ ]]; then
+     gum style --foreground $RED "Age should be a positive integer. Exiting..."
+        exit 1  
+    fi
+    
+    if [[ "$field" == "Student Email"  && ! "$input" =~ $email_pattern  ]]; then
+        gum style --foreground $RED "Invalid email format. Exiting..."
+        exit 1  
+    fi
+
+
 done
 
 cat <<EOF >>$file
