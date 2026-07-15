@@ -7,6 +7,8 @@ else
     exit 1
 fi
 
+clear
+
 email_pattern="[a-zA-Z0-9.+%_]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}"
 not_valid_positive_integer="[a-zA-Z]|[^a-zA-Z0-9]"
 Db_File="../Db/Local/SchoolDb/teachers.csv"
