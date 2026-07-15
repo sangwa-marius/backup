@@ -19,34 +19,36 @@ while true; do
         echo "$Db_File does not exist."
     fi
     
-    Student_email=$(awk -F ',' 'NR>1{print $3}' "$Db_File" | gum filter \
-        --placeholder "Filter by student email to get details" \
+    teacher_email=$(awk -F ',' 'NR>1{print $3}' "$Db_File" | gum filter \
+        --placeholder "Filter by email to get details" \
         --prompt.foreground "$FOREST_GREEN" \
         --cursor-text.foreground "$FOREST_GREEN" \
         --indicator.foreground "$FOREST_GREEN" \
         
     )
     
-    if [[ -z $Student_email ]]; then
+    if [[ -z $teacher_email ]]; then
         gum style --foreground "$RED" "Pls select an email"
         exit 1
     fi
+
+    row=$(grep "$teacher_email" "$Db_File")
     
-    while IFS=, read -r date name email age subject school; do
-        if [[ "$email" == "$Student_email" ]]; then
-            gum style \
+    IFS=, read -r date name email age subject school <<< $row
+
+    gum style \
             --border normal \
             --padding "1 2" \
-            --width 40 \
+            --width 50 \
             --bold  \
+            --margin "1 0" \
+            --border-foreground "$FOREST_GREEN" \
             "Name   : $name" \
             "Email  : $email" \
             "Age    : $age" \
             "Subject: $subject" \
-            "School: $school" \
+            "School : $school" \
             
-        fi
-    done <"$Db_File"
     
     if ! gum confirm "Wanna Go back to table?" --prompt.foreground $FOREST_GREEN --selected.background $FOREST_GREEN; then
         echo "Thank you"
