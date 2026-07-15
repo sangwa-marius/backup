@@ -9,9 +9,10 @@ else
     exit 1
 fi
 
+clear
+
 file="../Db/Local/SchoolDb/students.csv"
 framework="Powered by gum framework of Bash"
-clear
 style=$(gum style \
     --foreground $FOREST_GREEN \
     --align center \
@@ -31,45 +32,6 @@ gum style \
 --bold \
 "STUDENT RECORDING PORTAL" "$style"
 
-
-
-password=$(
-    gum input \
-    --password \
-    --placeholder "Enter the password" \
-    --cursor.foreground $ELECTRIC_BLUE \
-    --prompt.foreground $ELECTRIC_BLUE
-)
-
-if [[ -z $password ]]; then
-    gum style --foreground $RED "Password cannot be empty. Exiting..."
-    sleep 2
-    exit 1
-fi
-
-
-count=1
-
-while [[ $password != "sanMariento" ]]; do
-    
-    if [[ $count -ge 6 ]]; then
-        gum style --foreground $RED "Attempts over! Exiting..."
-        sleep 2
-        exit 1
-    fi
-    
-    password=$(gum input \
-        --password --placeholder "Wrong password. try again[attempt $count/5]" \
-        --placeholder.foreground $DARK_RED \
-        --cursor.foreground $RED \
-        --prompt.foreground $RED
-    )
-    ((count++))
-done
-
-gum style \
---foreground $BLUE \
---bold "Welcome again"
 
 
 

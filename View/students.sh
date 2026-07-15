@@ -30,21 +30,21 @@ while true; do
         exit 1
     fi
     
-    while IFS=, read -r date name age email school city country; do
-        if [[ "$email" == "$Student_email" ]]; then
+    row=$(grep "$Student_email" "$Db_File")
+    IFS=, read -r date name age email school city country <<< "$row"
             gum style \
             --border normal \
             --padding "1 2" \
-            --width 40 \
-            --bold  \
+            --width 50 \
+            --bold \
+            --margin "1 0" \
+            --foreground "$GRAY" \
+            --border-foreground "$FOREST_GREEN" \
             "Name   : $name" \
             "Email  : $email" \
             "Age    : $age" \
             "City   : $city" \
             "Country: $country" \
-            
-        fi
-    done <"$Db_File"
     
     if ! gum confirm "Wanna Go back to table?" --prompt.foreground $FOREST_GREEN --selected.background $FOREST_GREEN; then
         echo "Thank you"
