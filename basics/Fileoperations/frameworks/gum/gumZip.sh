@@ -18,7 +18,7 @@ gum style \
 file_path=$(
     gum input \
     --placeholder="Enter a path of the file to zip" \
-    --placeholder.foreground 212
+    --cursor.foreground 22
 )
 
 if [[ -z $file_path ]]; then
