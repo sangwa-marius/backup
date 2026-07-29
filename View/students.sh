@@ -36,15 +36,14 @@ while true; do
             --border normal \
             --padding "1 2" \
             --width 50 \
-            --bold \
             --margin "1 0" \
             --foreground "$GRAY" \
-            --border-foreground "$FOREST_GREEN" \
-            "Name   : $name" \
-            "Email  : $email" \
-            "Age    : $age" \
-            "City   : $city" \
-            "Country: $country" \
+            --border-foreground "$GRAY" \
+            "Name    : $name" \
+            "Email   : $email" \
+            "Age     : $age" \
+            "City    : $city" \
+            "Country : $country" \
     
     if ! gum confirm "Wanna Go back to table?" --prompt.foreground $FOREST_GREEN --selected.background $FOREST_GREEN; then
         echo "Thank you"
