@@ -40,9 +40,9 @@ while true; do
             --border normal \
             --padding "1 2" \
             --width 50 \
-            --bold  \
             --margin "1 0" \
-            --border-foreground "$FOREST_GREEN" \
+            --border-foreground "$GRAY" \
+            --foreground "$GRAY" \
             "Name   : $name" \
             "Email  : $email" \
             "Age    : $age" \
