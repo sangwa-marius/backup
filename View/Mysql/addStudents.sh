@@ -8,8 +8,20 @@ columns=(
     "Student_age"
 )
 
+echo ""
+
 for column in "${columns[@]}"; do
-    read -p "Enter $column: "  value
+    value=$(
+        gum input \
+        --placeholder "Enter $column" \
+        --cursor.foreground "40" \
+        --prompt.foreground "40"
+    )
+    if [[ -z $value ]]; then
+        echo -e "\033[0;31m$column can't be empty.Exiting..\033[0m"
+        sleep 2
+        exit 1
+    fi
     student_info["$column"]=$value
 done
 mysql -u "$Db_user" -p"$Db_password" "$Db_name" -e "
