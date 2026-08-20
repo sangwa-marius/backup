@@ -9,14 +9,14 @@ columns=(
 )
 
 frame_work=$(
- gum style \
---border rounded \
---border-foreground 50 \
---foreground 50 \
---padding "0 1" \
---align center \
---width 40 \
-"Powered by gum frame work"
+    gum style \
+    --border rounded \
+    --border-foreground 50 \
+    --foreground 50 \
+    --padding "0 1" \
+    --align center \
+    --width 40 \
+    "Powered by gum frame work"
 )
 
 
