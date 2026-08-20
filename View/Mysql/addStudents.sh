@@ -8,6 +8,27 @@ columns=(
     "Student_age"
 )
 
+frame_work=$(
+ gum style \
+--border rounded \
+--border-foreground 50 \
+--foreground 50 \
+--padding "0 1" \
+--align center \
+--width 40 \
+"Powered by gum frame work"
+)
+
+
+gum style \
+--border rounded \
+--foreground 40 \
+--border-foreground 40 \
+--padding "0 1" \
+--align center \
+--width 50 \
+"💾 RECORD THE STUDENTS TO DATABASE" "$frame_work"
+
 echo ""
 
 for column in "${columns[@]}"; do
