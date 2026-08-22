@@ -2,11 +2,16 @@
 
 if [[ -z "$MONGO_URL" ]]; then
 echo MONGO_URL not set
+exit 1
 fi
 
-selected_student=$(raw_json=$(mongosh "$MONGO_URL" --json=relaxed --quiet --eval 'db.students.find().toArray()')
-echo "$raw_json" | jq -r  '"\(.[].name)"' | gum filter)
+raw_json=$(mongosh "$MONGO_URL" --json=relaxed --quiet --eval 'db.students.find().toArray()')
+selected_student=$(echo "$raw_json" | jq -r  '"\(.[].name)"' | gum filter)
 
+if [[ -z $selected_student ]]; then
+echo "No student selected"
+exit 1
+fi
 
 echo "Detailed information about $selected_student"
 
