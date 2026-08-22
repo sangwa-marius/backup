@@ -15,12 +15,21 @@ fi
 
 echo "Detailed information about $selected_student"
 
+selected_student_info
+
+fetch_selected_student_info(){
 selected_student_info=$(mongosh "$MONGO_URL" --quiet --json=relaxed --eval "db.students.findOne({name:'${selected_student}'})" | jq -r '"
 Student name : \(.name)
 Student email: \(.email)
 School       : \(.school)
 age          : \(.age)
 "')
+}
+
+gum spin \
+--spinner dot \
+-- bash -c 'fetch_selected_student_info'
+
 
 gum style \
 --border normal \
