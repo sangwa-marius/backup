@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+clear
+
 declare -A student_info
 columns=(
     "Student_name"
