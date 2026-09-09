@@ -75,8 +75,6 @@ gum style \
 --bold "ACCESS GRANTED"
 
 
-
-
 choice=$(
     gum choose "1. Read" "2. Record" \
     --header "Options" \
