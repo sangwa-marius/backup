@@ -68,7 +68,7 @@ find_max(){
 
 square(){
     if [[ -z $1 ]]; then
-        echo -e "${PURPLE}Usage:${BOLD_PURPLE}sqaure arg${NC}"
+        echo -e "${PURPLE}Usage:${BOLD_PURPLE}square arg${NC}"
         return
     fi
     
@@ -97,7 +97,7 @@ square_any(){
     local entries=("$@")
     
     if [[ "${#entries[@]}" -lt 1 ]]; then
-        echo -e "${PURPLE}Usange: square_any ${BOLD_PURPLE}argument1, argument2,...argument(n)${NC}"
+        echo -e "${PURPLE}Usage: square_any ${BOLD_PURPLE}argument1, argument2,...argument(n)${NC}"
         return
     fi
     
